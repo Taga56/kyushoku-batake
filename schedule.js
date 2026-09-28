@@ -1,18 +1,21 @@
 const planCrops = [
   {
     name: "玉ねぎ",
+    theme: "onion",
     quantity: "目標量を確認後に記載",
     place: "畝・株数を確認後に記載",
     milestones: ["播種", "定植", "収穫予定"],
   },
   {
     name: "小松菜",
+    theme: "komatsuna",
     quantity: "目標量を確認後に記載",
     place: "畝・播種回数を確認後に記載",
     milestones: ["播種", "管理作業", "収穫予定"],
   },
   {
     name: "キャベツ",
+    theme: "cabbage",
     quantity: "目標量を確認後に記載",
     place: "畝・株数を確認後に記載",
     milestones: ["播種", "定植", "収穫予定"],
@@ -178,8 +181,8 @@ function renderPlanCrops() {
   container.innerHTML = planCrops
     .map(
       (crop) => `
-        <article class="crop-entry">
-          <div class="crop-entry__name"><h3>${crop.name}</h3><span>栽培予定</span></div>
+        <article class="crop-entry crop-entry--${crop.theme}">
+          <div class="crop-entry__name"><span class="crop-entry__badge">栽培予定</span><h3>${crop.name}</h3></div>
           <dl>
             <div><dt>目標量</dt><dd>${crop.quantity}</dd></div>
             <div><dt>栽培場所</dt><dd>${crop.place}</dd></div>
