@@ -3,26 +3,288 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="給食畑の、今期の栽培予定と過去の栽培記録。播種から収穫・納入までの流れを確認できます。"
-    />
+    <meta name="description" content="給食畑の、今期の栽培予定と過去の栽培記録。播種から収穫・納入までの流れを確認できます。" />
     <title>畑の予定帳 | 給食畑</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- file:// で開いた場合にも、外部CSSが読めなければ最低限のデザインを保つ -->
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M31 58V21M31 34C16 35 10 25 10 14c13-1 21 6 21 20M33 25c3-13 11-18 22-17 0 13-8 20-22 20' fill='none' stroke='%231b342f' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" />
     <style>
-      :root{--ink:#16271c;--forest:#153b2a;--moss:#367353;--acid:#dff154;--clay:#f06e52;--sky:#87b9ca;--paper:#f4f2eb;--white:#fffefa;--line:#cbd5c8;--muted:#5f6f63;--content:1180px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Yu Gothic",Arial,sans-serif;font-size:16px;font-weight:500;line-height:1.8}button{font:inherit;cursor:pointer}a{color:inherit;text-underline-offset:.2em}h1,h2,h3,h4{margin-top:0;font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Yu Gothic",Arial,sans-serif;font-weight:800;letter-spacing:-.035em;line-height:1.22}.content-width{width:min(var(--content),calc(100% - 3rem));margin:auto}.skip-link{position:fixed;z-index:100;top:.75rem;left:.75rem;transform:translateY(-170%);padding:.45rem .8rem;background:var(--acid);color:var(--ink);font-weight:800}.skip-link:focus{transform:translateY(0)}.site-header{background:var(--forest);color:var(--white)}.site-header__inner{width:min(var(--content),calc(100% - 3rem));min-height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem}.brand{display:inline-flex;align-items:center;gap:.48rem;color:inherit;font-size:1.18rem;font-weight:800;letter-spacing:.02em;line-height:1;text-decoration:none;white-space:nowrap}.brand__mark{width:1.5rem;height:1.5rem;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.65}nav{display:flex;align-items:center;gap:1.4rem;font-size:.83rem;font-weight:700}nav>a{padding:.38rem 0;color:rgba(255,255,250,.75);text-decoration:none}nav>a.is-current{border-bottom:2px solid var(--acid);color:white}.header-cta{padding:.45rem .9rem;border:1px solid rgba(255,255,250,.5);border-radius:999px}.hero{position:relative;isolation:isolate;overflow:hidden;min-height:600px;background:var(--forest);color:var(--white)}.hero__field{position:absolute;z-index:-1;inset:0}.hero__field svg{width:100%;height:100%}.field-line{fill:none;stroke:rgba(223,241,84,.8);stroke-linecap:round;stroke-width:2.2}.field-line--two{stroke:rgba(255,254,250,.43)}.field-line--three{stroke:rgba(240,110,82,.88)}.field-sprout{fill:none;stroke:var(--acid);stroke-linecap:round;stroke-linejoin:round;stroke-width:4.6}.field-sprout--two{stroke:rgba(255,254,250,.74)}.hero__inner{display:flex;min-height:inherit;flex-direction:column;justify-content:center;padding:7rem 0}.eyebrow{margin:0 0 .72rem;font-size:.67rem;font-weight:800;letter-spacing:.14em;line-height:1.4}.hero .eyebrow,.section-intro--calendar .eyebrow{color:var(--acid)}h1{max-width:12ch;margin-bottom:1rem;font-size:clamp(3.35rem,8vw,7.5rem);letter-spacing:-.07em;line-height:1}.hero__copy{max-width:32rem;margin:0 0 3.5rem;font-size:1.1rem;font-weight:700}.hero__meta{display:grid;width:min(100%,46rem);grid-template-columns:1fr 1.45fr;border-top:1px solid rgba(255,255,250,.38)}.hero__meta p{margin:0;padding:.85rem 1rem 0 0}.hero__meta p+p{padding-left:1rem;border-left:1px solid rgba(255,255,250,.38)}.hero__meta span,.hero__meta strong{display:block}.hero__meta span{color:rgba(255,255,250,.6);font-size:.61rem;font-weight:800;letter-spacing:.1em}.hero__meta strong{font-size:.9rem}.season-navigation{position:sticky;z-index:10;top:0;border-bottom:1px solid var(--line);background:rgba(244,242,235,.96)}.season-tabs{display:grid;grid-template-columns:repeat(2,1fr)}.season-tab{display:flex;min-height:76px;align-items:center;gap:.8rem;padding:.75rem .2rem;border:0;border-bottom:3px solid transparent;background:transparent;color:var(--muted);text-align:left;font-size:.95rem;font-weight:800}.season-tab+.season-tab{padding-left:1.15rem}.season-tab__index{color:#9aa89b;font-size:.7rem}.season-tab small{display:block;color:#809082;font-size:.67rem}.season-tab.is-active{border-color:var(--forest);color:var(--forest)}.season-panel{padding:clamp(4.8rem,9vw,8.75rem) 0}.season-panel[hidden]{display:none}.section-intro{display:grid;grid-template-columns:1.18fr .82fr;align-items:end;gap:5rem}.section-intro h2{margin:0;font-size:clamp(2.25rem,4.6vw,4.75rem)}.section-intro>p{max-width:31rem;margin:0;color:var(--muted);font-weight:700}.section-intro--plan .eyebrow,.section-intro--archive .eyebrow,.section-heading .eyebrow,.delivery-summary .eyebrow,.future-flow .eyebrow{color:var(--moss)}.crop-ledger{display:grid;grid-template-columns:repeat(3,1fr);margin-top:5rem;border-top:2px solid var(--ink)}.crop-entry{position:relative;min-width:0;min-height:25rem;padding:1.35rem 1.25rem 1.5rem;border:1px solid var(--line);border-top:0;background:var(--white)}.crop-entry::before{position:absolute;top:0;left:0;width:100%;height:.4rem;background:var(--entry-color);content:""}.crop-entry--onion{--entry-color:#7c5f93;--entry-pale:#f0eaf2}.crop-entry--komatsuna{--entry-color:#278455;--entry-pale:#e5f1e8}.crop-entry--cabbage{--entry-color:#167c89;--entry-pale:#e6f2f3}.crop-entry__number{display:block;margin-bottom:2.4rem;color:var(--entry-color);font-size:.68rem;font-weight:800;letter-spacing:.13em}.crop-entry__name{display:flex;align-items:flex-start;justify-content:space-between;gap:.7rem}.crop-entry__name h3{margin:0;color:var(--entry-color);font-size:2.25rem}.crop-glyph{width:3rem;height:3rem;border:2px solid var(--entry-color);border-radius:50%}.crop-entry dl{display:grid;gap:1.1rem;margin:2.1rem 0 0}.crop-entry dl>div{padding-top:.7rem;border-top:1px solid var(--line)}dt{color:#708073;font-size:.68rem;font-weight:800;letter-spacing:.06em}dd{margin:.12rem 0 0;font-size:.88rem;font-weight:700}.crop-entry__milestones dd{display:flex;flex-wrap:wrap;gap:.3rem}.crop-entry__milestones dd span{padding:.2rem .42rem;border-radius:999px;background:var(--entry-pale);color:var(--entry-color);font-size:.68rem;font-weight:800}.future-flow{display:grid;grid-template-columns:.8fr 1.7fr;gap:5rem;margin-top:8rem;padding-top:1.1rem;border-top:2px solid var(--ink)}.future-flow__head h2{margin:0;font-size:3rem}.schedule-pending{padding:1.2rem 0 0;border-top:3px dashed var(--acid)}.schedule-pending__lead{margin:1.4rem 0 2rem;color:var(--forest);font-size:1.12rem;font-weight:800}.schedule-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:0;padding:0;overflow:hidden;border:1px solid var(--line);background:var(--line);list-style:none}.schedule-steps li{min-height:8.75rem;padding:1.15rem .8rem;background:var(--white)}.schedule-steps span{display:block;margin-bottom:1.7rem;color:var(--clay);font-size:.7rem;font-weight:800}.schedule-steps strong{font-weight:800}.annotation,.gantt-note{color:var(--muted);font-size:.72rem;font-weight:700}.season-panel--archive{background:#e4ede1}.section-intro--archive{margin-bottom:6rem}.delivery-summary{display:grid;grid-template-columns:13rem 1fr;gap:3rem;padding:2rem 0;border-top:2px solid var(--ink);border-bottom:1px solid #b8c6b8}.delivery-summary__title h3{margin:0;font-size:1.32rem}.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#bdcabd}.summary-grid article{min-height:11.5rem;padding:1.15rem;background:var(--white);border-top:.45rem solid var(--moss)}.summary-grid article:nth-child(2){border-color:var(--sky)}.summary-grid article:nth-child(3){border-color:var(--clay)}.summary-grid p,.summary-grid small{display:block;margin:0;font-size:.72rem;font-weight:800}.summary-grid strong{display:block;margin:.55rem 0 .45rem;font-size:3rem;font-weight:800;letter-spacing:-.07em;line-height:1}.summary-grid strong span{font-size:.7em}.archive-gantt-section,.archive-list-section{margin-top:8rem}.section-heading{margin-bottom:1.3rem}.section-heading--gantt{display:flex;align-items:end;justify-content:space-between;gap:1.5rem}.section-heading h3{margin:0;font-size:2.1rem}.legend,.crop-filter>div{display:flex;flex-wrap:wrap;gap:.7rem}.legend{justify-content:flex-end;font-size:.7rem;font-weight:800}.legend span{display:inline-flex;align-items:center;gap:.34rem}.legend__swatch{width:.75rem;height:.75rem;border-radius:50%;background:#278455}.legend__swatch--harvest{background:var(--clay)}.legend__swatch--delivery{background:#496b9a}.crop-filter{display:flex;align-items:center;gap:1rem;margin-bottom:1.15rem;font-size:.73rem;font-weight:800}.crop-filter button{padding:.27rem .58rem;border:1px solid #aebcad;border-radius:999px;background:transparent;color:var(--forest);font-size:.69rem;font-weight:800}.crop-filter button[aria-pressed="true"]{background:var(--forest);color:white}.gantt-scroll{overflow-x:auto;padding:.35rem 0 .85rem}.gantt-chart{min-width:1160px;overflow:hidden;border:1px solid #aebead;background:var(--white)}.gantt-header,.gantt-row{display:grid;grid-template-columns:10.5rem 1fr}.gantt-header>span,.gantt-row__label{padding:.58rem .72rem;border-right:1px solid #d8e1d7}.gantt-header>span,.gantt-header__months span{background:var(--forest);color:var(--white);font-size:.74rem;font-weight:800}.gantt-header__months,.gantt-header__weeks,.gantt-track{display:grid;grid-template-columns:repeat(var(--columns),minmax(0,1fr))}.gantt-header__months span,.gantt-header__weeks span{padding:.45rem;border-right:1px solid #d8e1d7;text-align:center}.gantt-header--weeks>span,.gantt-header__weeks span{background:#d4e1d3;color:var(--forest)}.gantt-row{min-height:3.18rem;border-top:1px solid #d8e1d7}.gantt-row.is-filtered{display:none}.gantt-row__label{display:grid;grid-template-columns:1fr 2.2rem;align-items:center;gap:.4rem;background:#fbfcf8;font-size:.72rem}.gantt-row__label span{color:#718074;text-align:right}.gantt-track{align-items:center;background-image:repeating-linear-gradient(to right,transparent 0,transparent calc((100% / var(--columns)) - 1px),#dce5db calc((100% / var(--columns)) - 1px),#dce5db calc(100% / var(--columns)))}.gantt-bar{display:grid;place-items:center;min-height:1.68rem;margin:.35rem .14rem;padding:.12rem;border-radius:999px;color:white;font-size:.63rem;font-weight:800;text-align:center}.gantt-bar--work{background:#278455}.gantt-bar--harvest{background:var(--clay)}.gantt-bar--delivery{background:#496b9a}.monthly-list{display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid var(--ink)}.month-record{min-width:0;padding:1.2rem 1rem 1.5rem;border:1px solid #b9c8b8;border-top:0;background:rgba(255,254,250,.72)}.month-record h4{margin:0 0 1.5rem;color:var(--forest);font-size:1.75rem}.month-record__period+.month-record__period{margin-top:1rem;padding-top:.9rem;border-top:1px solid #cbd6c9}.month-record__period p{margin:0 0 .36rem;color:var(--moss);font-size:.67rem;font-weight:800}.month-record__period ul{display:grid;gap:.45rem;margin:0;padding:0;list-style:none;font-size:.76rem;font-weight:700}.month-record__period li{padding-left:.72rem}.calendar-section{padding:8rem 0;background:var(--forest);color:var(--white)}.section-intro--calendar{margin-bottom:5rem}.section-intro--calendar>p{color:rgba(255,254,250,.7)}.calendar-frame{height:650px;overflow:hidden;border:1px solid rgba(255,254,250,.58);background:var(--white);box-shadow:10px 10px 0 rgba(223,241,84,.75)}.calendar-frame iframe{width:100%;height:100%;border:0}.site-footer{display:grid;place-items:center;gap:.45rem;padding:3rem 1.25rem;background:#10291d;color:white;text-align:center}.site-footer p,.site-footer small{margin:0;color:rgba(255,254,250,.65);font-size:.76rem;font-weight:700}@media(max-width:880px){.section-intro{grid-template-columns:1fr;gap:1rem}.delivery-summary{grid-template-columns:1fr}.monthly-list{grid-template-columns:repeat(3,1fr)}}@media(max-width:720px){.site-header__inner{min-height:66px}nav>a:not(.is-current),.header-cta{display:none}.hero{min-height:590px}.hero__inner{justify-content:flex-start;padding-top:5rem}.hero__meta{grid-template-columns:1fr;width:100%}.hero__meta p+p{padding:.7rem 0 0;border-top:1px solid rgba(255,255,250,.38);border-left:0}.season-tab{min-height:66px;font-size:.82rem}.crop-ledger{grid-template-columns:1fr}.crop-entry{min-height:0}.future-flow{grid-template-columns:1fr;gap:2rem}.section-heading--gantt{display:block}.legend{justify-content:flex-start;margin-top:1rem}.summary-grid,.monthly-list{grid-template-columns:1fr}.summary-grid article{min-height:0}.calendar-frame{height:510px}}@media(max-width:480px){.content-width,.site-header__inner{width:calc(100% - 2rem)}h1{font-size:clamp(3rem,16vw,4.25rem)}.hero__copy br{display:none}.schedule-steps{grid-template-columns:1fr}.schedule-steps li{min-height:0;padding:.95rem}.schedule-steps span{display:inline;margin-right:.65rem}.schedule-steps strong{display:inline}.crop-filter{display:block}.crop-filter>div{margin-top:.45rem}}
+      :root {
+        --ink: #1b342f;
+        --leaf: #216b59;
+        --leaf-pale: #e0ece2;
+        --canvas: #f7f8f5;
+        --paper: #ffffff;
+        --soil: #b95844;
+        --water: #638b9a;
+        --sun: #d6a849;
+        --line: #d2ddd4;
+        --muted: #64756d;
+        --onion: #80688f;
+        --komatsuna: #2f805e;
+        --cabbage: #3b8590;
+        --delivery: #4e759b;
+        --content: 1160px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.85;
+      }
+
+      button, input, textarea, select { font: inherit; }
+      button { cursor: pointer; }
+      a { color: inherit; text-underline-offset: 0.2em; }
+      h1, h2, h3, h4 {
+        margin: 0;
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.075em;
+        line-height: 1.2;
+      }
+
+      a:focus-visible, button:focus-visible, .gantt-scroll:focus-visible {
+        outline: 3px solid var(--sun);
+        outline-offset: 4px;
+      }
+
+      .skip-link {
+        position: fixed;
+        z-index: 100;
+        top: 0.7rem;
+        left: 0.7rem;
+        transform: translateY(-160%);
+        padding: 0.45rem 0.8rem;
+        background: var(--ink);
+        color: white;
+        font-weight: 700;
+      }
+      .skip-link:focus { transform: translateY(0); }
+      .content-width { width: min(var(--content), calc(100% - 3rem)); margin: auto; }
+
+      /* Navigation */
+      .site-header { border-bottom: 1px solid var(--line); background: rgba(247, 248, 245, 0.96); }
+      .site-header__inner {
+        width: min(var(--content), calc(100% - 3rem));
+        min-height: 74px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+        font-size: 1.08rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .brand__mark { width: 1.36rem; height: 1.36rem; fill: none; stroke: var(--leaf); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.7; }
+      nav { display: flex; align-items: center; gap: clamp(0.7rem, 1.8vw, 1.65rem); font-family: "Noto Sans JP", sans-serif; font-size: 0.78rem; font-weight: 700; }
+      nav > a { padding: 0.35rem 0; color: #56665f; text-decoration: none; }
+      nav > a:not(.header-cta) { border-bottom: 2px solid transparent; }
+      nav > a:not(.header-cta):hover, nav > a.is-current { border-color: var(--soil); color: var(--ink); }
+      .header-cta { padding: 0.42rem 0.83rem; border: 1px solid var(--ink); color: var(--ink); }
+      .header-cta:hover { background: var(--ink); color: white; }
+
+      /* Opening: a practical field index, not a decorative hero */
+      .opening { padding: clamp(3.5rem, 7vw, 6.8rem) 0 clamp(2.5rem, 5vw, 4.2rem); background: var(--paper); }
+      .opening__grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(15rem, 0.55fr); align-items: end; gap: clamp(2rem, 8vw, 8rem); }
+      .opening__overline, .section-kicker { margin: 0 0 0.8rem; color: var(--leaf); font-family: "Noto Sans JP", sans-serif; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.02em; }
+      h1 { font-size: clamp(3.25rem, 7vw, 6.7rem); letter-spacing: -0.11em; }
+      .opening__copy { max-width: 35rem; margin: 1.35rem 0 0; color: #53645c; font-size: clamp(0.98rem, 1.4vw, 1.13rem); font-weight: 700; }
+      .season-index { padding: 1rem 0 0; border-top: 2px solid var(--ink); }
+      .season-index__year { margin: 0; font-family: "Noto Sans JP", sans-serif; font-size: clamp(1.45rem, 2.5vw, 2.25rem); font-weight: 800; letter-spacing: -0.07em; line-height: 1.2; }
+      .season-index__year span { display: block; color: var(--muted); font-size: 0.75rem; font-weight: 600; letter-spacing: 0; }
+      .season-index__crops { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.34rem; margin-top: 1.5rem; }
+      .season-index__crops span { padding-top: 0.56rem; border-top: 5px solid var(--crop-color); font-family: "Noto Sans JP", sans-serif; font-size: 0.73rem; font-weight: 700; }
+      .season-index__crops span:nth-child(1) { --crop-color: var(--onion); }
+      .season-index__crops span:nth-child(2) { --crop-color: var(--komatsuna); }
+      .season-index__crops span:nth-child(3) { --crop-color: var(--cabbage); }
+      .opening__field-rule { width: min(var(--content), calc(100% - 3rem)); height: 1px; margin: clamp(3rem, 6vw, 5.5rem) auto 0; background: linear-gradient(90deg, var(--onion) 0 33.33%, var(--komatsuna) 33.33% 66.66%, var(--cabbage) 66.66%); }
+
+      /* Season navigation */
+      .season-navigation { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid var(--line); background: rgba(247, 248, 245, 0.96); backdrop-filter: blur(10px); }
+      .season-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .season-tab { min-height: 72px; padding: 0.7rem 0; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--muted); text-align: left; font-family: "Noto Sans JP", sans-serif; font-size: 0.9rem; font-weight: 700; line-height: 1.35; }
+      .season-tab + .season-tab { padding-left: 1.2rem; }
+      .season-tab__index { display: none; }
+      .season-tab small { display: block; margin-top: 0.12rem; font-family: "M PLUS Rounded 1c", sans-serif; font-size: 0.67rem; font-weight: 500; }
+      .season-tab.is-active { border-color: var(--soil); color: var(--ink); }
+
+      /* Shared composition */
+      .season-panel { padding: clamp(4rem, 8vw, 7.5rem) 0; }
+      .season-panel[hidden] { display: none; }
+      .section-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(17rem, 0.9fr); align-items: end; gap: clamp(2rem, 8vw, 8rem); }
+      .section-intro h2 { font-size: clamp(2.25rem, 4.7vw, 4.75rem); }
+      .section-intro > p { max-width: 31rem; margin: 0 0 0.35rem; color: var(--muted); font-size: clamp(0.92rem, 1.35vw, 1.04rem); font-weight: 700; }
+
+      /* Current season */
+      .season-panel--plan { background: var(--canvas); }
+      .crop-ledger { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: clamp(2.8rem, 6vw, 5.8rem); border-top: 1px solid var(--ink); }
+      .crop-entry { position: relative; min-width: 0; padding: 1.4rem 1.25rem 1.7rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: transparent; }
+      .crop-entry:first-child { border-left: 1px solid var(--line); }
+      .crop-entry--onion { --entry-color: var(--onion); --entry-pale: #eeeaf1; }
+      .crop-entry--komatsuna { --entry-color: var(--komatsuna); --entry-pale: #e4f0e9; }
+      .crop-entry--cabbage { --entry-color: var(--cabbage); --entry-pale: #e2eff0; }
+      .crop-entry__number { display: block; margin-bottom: 2.6rem; color: var(--entry-color); font-family: "Noto Sans JP", sans-serif; font-size: 0.69rem; font-weight: 700; }
+      .crop-entry__name { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+      .crop-entry__name h3 { color: var(--ink); font-size: clamp(1.75rem, 2.55vw, 2.4rem); }
+      .crop-glyph { position: relative; flex: 0 0 auto; width: 2.4rem; height: 2.4rem; border: 1.8px solid var(--entry-color); border-radius: 50%; }
+      .crop-glyph::before, .crop-glyph::after { position: absolute; content: ""; }
+      .crop-entry--onion .crop-glyph::before { top: 0.54rem; left: 0.67rem; width: 0.86rem; height: 1rem; border: 1.7px solid var(--entry-color); border-radius: 48% 48% 52% 52%; }
+      .crop-entry--onion .crop-glyph::after { top: 0.25rem; left: 1.12rem; height: 0.5rem; border-left: 1.7px solid var(--entry-color); }
+      .crop-entry--komatsuna .crop-glyph::before { top: 0.49rem; left: 0.73rem; width: 0.86rem; height: 1.09rem; border: 1.7px solid var(--entry-color); border-radius: 100% 0 100% 0; transform: rotate(-40deg); }
+      .crop-entry--komatsuna .crop-glyph::after { top: 1.48rem; left: 1.08rem; height: 0.57rem; border-left: 1.7px solid var(--entry-color); transform: rotate(18deg); }
+      .crop-entry--cabbage .crop-glyph::before { inset: 0.51rem; border: 1.7px solid var(--entry-color); border-radius: 50%; }
+      .crop-entry--cabbage .crop-glyph::after { top: 0.35rem; left: 1.11rem; width: 1px; height: 1.72rem; background: var(--entry-color); transform: rotate(34deg); }
+      .crop-entry dl { display: grid; gap: 1.05rem; margin: 2.3rem 0 0; }
+      .crop-entry dl > div { padding-top: 0.75rem; border-top: 1px solid color-mix(in srgb, var(--entry-color) 22%, white); }
+      dt { color: #718179; font-family: "Noto Sans JP", sans-serif; font-size: 0.67rem; font-weight: 700; }
+      dd { margin: 0.18rem 0 0; font-size: 0.85rem; font-weight: 700; line-height: 1.65; }
+      .crop-entry__milestones dd { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+      .crop-entry__milestones dd span { padding: 0.18rem 0.38rem; background: var(--entry-pale); color: var(--entry-color); font-family: "Noto Sans JP", sans-serif; font-size: 0.64rem; font-weight: 700; }
+
+      .future-flow { display: grid; grid-template-columns: minmax(13rem, 0.75fr) minmax(0, 1.75fr); gap: clamp(2.4rem, 8vw, 8rem); margin-top: clamp(5rem, 10vw, 9rem); padding-top: 1.1rem; border-top: 1px solid var(--ink); }
+      .future-flow__head h2 { font-size: clamp(1.85rem, 3.6vw, 3.45rem); }
+      .schedule-pending { padding-top: 0.2rem; }
+      .schedule-pending__lead { margin: 0 0 1.5rem; color: var(--ink); font-family: "Noto Sans JP", sans-serif; font-size: clamp(1.05rem, 1.7vw, 1.3rem); font-weight: 700; line-height: 1.65; }
+      .schedule-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 0; padding: 0; border: 1px solid var(--line); background: var(--line); list-style: none; }
+      .schedule-steps li { min-height: 7.6rem; padding: 1rem; background: var(--paper); }
+      .schedule-steps span { display: block; margin-bottom: 1.6rem; color: var(--soil); font-family: "Noto Sans JP", sans-serif; font-size: 0.68rem; font-weight: 700; }
+      .schedule-steps strong { font-family: "Noto Sans JP", sans-serif; font-size: 0.91rem; font-weight: 700; }
+      .annotation, .gantt-note { margin: 0.8rem 0 0; color: var(--muted); font-size: 0.72rem; font-weight: 700; }
+
+      /* Archive */
+      .season-panel--archive { background: var(--leaf-pale); }
+      .section-intro--archive { margin-bottom: clamp(3.4rem, 7vw, 6rem); }
+      .delivery-summary { display: grid; grid-template-columns: 12.5rem 1fr; gap: clamp(1.8rem, 4vw, 4rem); padding: 1.6rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid #bccdc0; }
+      .delivery-summary__title h3 { font-size: 1.3rem; }
+      .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #bdcbbf; }
+      .summary-grid article { min-width: 0; min-height: 10rem; padding: 1.05rem; background: var(--paper); border-top: 4px solid var(--komatsuna); }
+      .summary-grid article:nth-child(2) { border-color: var(--water); }
+      .summary-grid article:nth-child(3) { border-color: var(--soil); }
+      .summary-grid p, .summary-grid small { display: block; margin: 0; color: var(--muted); font-family: "Noto Sans JP", sans-serif; font-size: 0.68rem; font-weight: 700; }
+      .summary-grid strong { display: block; margin: 0.46rem 0 0.35rem; color: var(--ink); font-family: "Noto Sans JP", sans-serif; font-size: clamp(1.85rem, 3.1vw, 2.85rem); font-weight: 800; letter-spacing: -0.09em; line-height: 1; }
+      .summary-grid strong span { margin-left: 0.12rem; font-size: 0.65em; letter-spacing: 0; }
+
+      .archive-gantt-section { margin-top: clamp(4.5rem, 9vw, 8.5rem); }
+      .section-heading { margin-bottom: 1.25rem; }
+      .section-heading--gantt { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; }
+      .section-heading h3 { font-size: clamp(1.42rem, 2.6vw, 2.25rem); }
+      .legend { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.7rem; color: var(--muted); font-family: "Noto Sans JP", sans-serif; font-size: 0.68rem; font-weight: 700; }
+      .legend span { display: inline-flex; align-items: center; gap: 0.3rem; }
+      .legend__swatch { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--komatsuna); }
+      .legend__swatch--harvest { background: var(--soil); }
+      .legend__swatch--delivery { background: var(--delivery); }
+      .crop-filter { display: flex; align-items: center; gap: 0.8rem; margin: 0 0 1rem; color: var(--muted); font-size: 0.72rem; font-weight: 700; }
+      .crop-filter > div { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+      .crop-filter button { padding: 0.25rem 0.54rem; border: 1px solid #aabbb0; border-radius: 999px; background: transparent; color: var(--ink); font-family: "Noto Sans JP", sans-serif; font-size: 0.66rem; font-weight: 700; }
+      .crop-filter button:hover, .crop-filter button[aria-pressed="true"] { border-color: var(--leaf); background: var(--leaf); color: white; }
+      .gantt-scroll { overflow-x: auto; padding: 0.3rem 0 0.8rem; }
+      .gantt-chart { min-width: 1160px; overflow: hidden; border: 1px solid #afc0b4; background: var(--paper); }
+      .gantt-header, .gantt-row { display: grid; grid-template-columns: 10.5rem 1fr; }
+      .gantt-header > span, .gantt-row__label { padding: 0.55rem 0.72rem; border-right: 1px solid #dbe4dc; }
+      .gantt-header > span, .gantt-header__months span { background: var(--ink); color: white; font-family: "Noto Sans JP", sans-serif; font-size: 0.72rem; font-weight: 700; }
+      .gantt-header__months, .gantt-header__weeks, .gantt-track { display: grid; grid-template-columns: repeat(var(--columns), minmax(0, 1fr)); }
+      .gantt-header__months span, .gantt-header__weeks span { padding: 0.4rem; border-right: 1px solid #d5ded6; text-align: center; }
+      .gantt-header--weeks > span, .gantt-header__weeks span { background: #e5ece5; color: var(--ink); }
+      .gantt-header__weeks span { font-family: "Noto Sans JP", sans-serif; font-size: 0.61rem; font-weight: 700; }
+      .gantt-row { min-height: 3.05rem; border-top: 1px solid #dbe4dc; }
+      .gantt-row--sub { min-height: 2.7rem; }
+      .gantt-row.is-filtered { display: none; }
+      .gantt-row__label { display: grid; grid-template-columns: 1fr 2.2rem; align-items: center; gap: 0.35rem; background: #fbfcfa; font-family: "Noto Sans JP", sans-serif; font-size: 0.7rem; line-height: 1.35; }
+      .gantt-row__label strong { font-size: 0.76rem; }
+      .gantt-row__label span { color: #77867b; text-align: right; }
+      .gantt-track { align-items: center; background-image: repeating-linear-gradient(to right, transparent 0, transparent calc((100% / var(--columns)) - 1px), #dde6de calc((100% / var(--columns)) - 1px), #dde6de calc(100% / var(--columns))); }
+      .gantt-bar { display: grid; place-items: center; min-height: 1.62rem; margin: 0.34rem 0.14rem; padding: 0.1rem; border-radius: 0.18rem; color: white; font-family: "Noto Sans JP", sans-serif; font-size: 0.61rem; font-weight: 700; line-height: 1.2; text-align: center; }
+      .gantt-bar--work { background: var(--komatsuna); }
+      .gantt-bar--harvest { background: var(--soil); }
+      .gantt-bar--delivery { background: var(--delivery); }
+
+      .archive-list-section { margin-top: clamp(4.5rem, 9vw, 8.5rem); }
+      .monthly-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
+      .month-record { min-width: 0; padding: 1.05rem 0.92rem 1.4rem; border-right: 1px solid #b9c9bb; border-bottom: 1px solid #b9c9bb; background: rgba(255,255,255,0.48); }
+      .month-record:first-child { border-left: 1px solid #b9c9bb; }
+      .month-record h4 { margin: 0 0 1.3rem; font-size: 1.65rem; }
+      .month-record__period + .month-record__period { margin-top: 0.9rem; padding-top: 0.85rem; border-top: 1px solid #cbd8cc; }
+      .month-record__period p { margin: 0 0 0.3rem; color: var(--leaf); font-family: "Noto Sans JP", sans-serif; font-size: 0.64rem; font-weight: 700; }
+      .month-record__period ul { display: grid; gap: 0.42rem; margin: 0; padding: 0; list-style: none; font-size: 0.74rem; font-weight: 700; line-height: 1.55; }
+      .month-record__period li { position: relative; padding-left: 0.7rem; }
+      .month-record__period li::before { position: absolute; top: 0.42rem; left: 0; width: 0.28rem; height: 0.28rem; border-radius: 50%; background: var(--soil); content: ""; }
+
+      /* Calendar and footer */
+      .calendar-section { padding: clamp(4.5rem, 9vw, 8rem) 0; background: #eaf0e9; }
+      .section-intro--calendar { margin-bottom: clamp(2.8rem, 5vw, 4.5rem); }
+      .calendar-frame { height: clamp(500px, 65vw, 720px); overflow: hidden; border: 1px solid #b8c8ba; background: white; }
+      .calendar-frame iframe { width: 100%; height: 100%; border: 0; }
+      .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.7rem max(1.5rem, calc((100% - var(--content)) / 2)); background: var(--ink); color: white; }
+      .brand--footer { color: white; }
+      .brand--footer .brand__mark { stroke: #b9d2bd; }
+      .site-footer p, .site-footer small { margin: 0; color: rgba(255,255,255,0.64); font-size: 0.7rem; font-weight: 500; }
+
+      @media (max-width: 860px) {
+        .opening__grid, .section-intro { grid-template-columns: 1fr; gap: 1.4rem; }
+        .opening__field-rule { margin-top: 3rem; }
+        .delivery-summary { grid-template-columns: 1fr; gap: 1.3rem; }
+        .monthly-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .month-record:nth-child(4) { border-left: 1px solid #b9c9bb; }
+      }
+
+      @media (max-width: 700px) {
+        .site-header__inner { min-height: 64px; }
+        nav > a:not(.is-current), .header-cta { display: none; }
+        .opening { padding-top: 3.2rem; }
+        .opening__copy br { display: none; }
+        .season-index { max-width: 23rem; }
+        .season-tab { min-height: 65px; font-size: 0.8rem; }
+        .season-tab + .season-tab { padding-left: 0.7rem; }
+        .crop-ledger { grid-template-columns: 1fr; margin-top: 3rem; }
+        .crop-entry, .crop-entry:first-child { display: grid; grid-template-columns: minmax(7.5rem, 0.72fr) 1fr; gap: 1rem; border-left: 1px solid var(--line); }
+        .crop-entry__number { margin-bottom: 1rem; }
+        .crop-entry dl { margin: 0; }
+        .future-flow { grid-template-columns: 1fr; gap: 1.8rem; margin-top: 5rem; }
+        .section-heading--gantt { display: block; }
+        .legend { justify-content: flex-start; margin-top: 0.9rem; }
+        .summary-grid { grid-template-columns: 1fr; }
+        .summary-grid article { display: grid; min-height: 0; grid-template-columns: 1fr auto; align-items: center; }
+        .summary-grid strong { grid-row: span 2; grid-column: 2; margin: 0; }
+        .summary-grid small { grid-column: 1; }
+        .monthly-list { grid-template-columns: 1fr; }
+        .month-record, .month-record:nth-child(4) { border-left: 1px solid #b9c9bb; }
+        .site-footer { display: grid; justify-items: start; gap: 0.28rem; }
+      }
+
+      @media (max-width: 440px) {
+        .content-width, .site-header__inner { width: calc(100% - 2rem); }
+        h1 { font-size: clamp(3rem, 16vw, 4.2rem); }
+        .opening__copy { font-size: 0.94rem; }
+        .crop-entry, .crop-entry:first-child { grid-template-columns: 1fr; gap: 1rem; }
+        .crop-entry__number { margin-bottom: 0.4rem; }
+        .schedule-steps { grid-template-columns: 1fr; }
+        .schedule-steps li { min-height: 0; padding: 0.82rem 0.95rem; }
+        .schedule-steps span, .schedule-steps strong { display: inline; }
+        .schedule-steps span { margin-right: 0.6rem; }
+        .crop-filter { display: block; }
+        .crop-filter > div { margin-top: 0.45rem; }
+      }
+
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M31 58V21M31 34C16 35 10 25 10 14c13-1 21 6 21 20M33 25c3-13 11-18 22-17 0 13-8 20-22 20' fill='none' stroke='%2315271c' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E"
-    />
-    <link rel="stylesheet" href="schedule.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">本文へ移動</a>
@@ -30,9 +292,7 @@
     <header class="site-header">
       <div class="site-header__inner">
         <a class="brand" href="/" aria-label="給食畑 トップページ">
-          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
-            <path d="M20 34V15M20 23C11 24 7 18 7 10c8 0 13 4 13 13M21 18c2-8 7-11 13-10 0 8-5 12-13 12" />
-          </svg>
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 34V15M20 23C11 24 7 18 7 10c8 0 13 4 13 13M21 18c2-8 7-11 13-10 0 8-5 12-13 12" /></svg>
           <span>給食畑</span>
         </a>
         <nav aria-label="主要メニュー">
@@ -45,215 +305,78 @@
     </header>
 
     <main id="main">
-      <section class="hero" aria-labelledby="page-title">
-        <div class="hero__field" aria-hidden="true">
-          <svg viewBox="0 0 1440 690" preserveAspectRatio="xMidYMid slice">
-            <path class="field-line field-line--one" d="M-60 552C220 421 376 636 616 516S1012 405 1504 509" />
-            <path class="field-line field-line--two" d="M-42 640C242 493 385 723 673 582s482-122 802-18" />
-            <path class="field-line field-line--three" d="M-54 732C279 560 456 794 736 636s535-117 800 20" />
-            <g class="field-sprout field-sprout--one">
-              <path d="M1068 387v-95M1068 335c-40 4-56-21-55-54 36-2 55 17 55 54M1071 319c13-35 38-45 68-34-10 34-33 45-68 43" />
-            </g>
-            <g class="field-sprout field-sprout--two">
-              <path d="M1266 470v-70M1266 433c-29 3-41-15-40-39 27-2 40 13 40 39M1268 421c9-26 28-34 51-26-8 26-25 34-51 32" />
-            </g>
-          </svg>
-        </div>
-        <div class="hero__inner content-width">
-          <p class="eyebrow">畑から、今日の給食へ。</p>
-          <h1 id="page-title">畑の予定帳</h1>
-          <p class="hero__copy">
-            育てるもの、手をかける時期、届ける量。<br />
-            ひとつの季節を、みんなで見通せるように。
-          </p>
-          <div class="hero__meta" aria-label="今期の概要">
-            <p><span>SEASON</span><strong>2026 秋 — 2027 夏</strong></p>
-            <p><span>GROWING</span><strong>玉ねぎ・小松菜・キャベツ</strong></p>
+      <section class="opening" aria-labelledby="page-title">
+        <div class="opening__grid content-width">
+          <div>
+            <p class="opening__overline">栽培の予定と、これまでの記録</p>
+            <h1 id="page-title">畑の予定帳</h1>
+            <p class="opening__copy">育てるもの、手をかける時期、届ける量。<br />給食へ向かう畑の仕事を、ひとつずつ記録します。</p>
           </div>
+          <aside class="season-index" aria-label="今期の概要">
+            <p class="season-index__year">2026 秋 — 2027 夏<span>次の給食に向けて記録中</span></p>
+            <div class="season-index__crops"><span>玉ねぎ</span><span>小松菜</span><span>キャベツ</span></div>
+          </aside>
         </div>
+        <div class="opening__field-rule" aria-hidden="true"></div>
       </section>
 
       <section class="season-navigation" aria-label="表示する栽培期を選ぶ">
         <div class="content-width">
           <div class="season-tabs" role="tablist" aria-label="栽培期">
-            <button
-              id="tab-plan"
-              class="season-tab is-active"
-              type="button"
-              role="tab"
-              aria-selected="true"
-              aria-controls="panel-plan"
-              data-season-tab="plan"
-            >
-              <span class="season-tab__index">01</span>
-              <span>今期の予定<small>2026秋〜2027夏</small></span>
-            </button>
-            <button
-              id="tab-spring-2026"
-              class="season-tab"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="panel-spring-2026"
-              data-season-tab="spring-2026"
-            >
-              <span class="season-tab__index">02</span>
-              <span>過去の記録<small>2026年 春作</small></span>
-            </button>
+            <button id="tab-plan" class="season-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-plan" data-season-tab="plan"><span class="season-tab__index">01</span><span>今期の予定<small>2026秋〜2027夏</small></span></button>
+            <button id="tab-spring-2026" class="season-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-spring-2026" data-season-tab="spring-2026"><span class="season-tab__index">02</span><span>過去の記録<small>2026年 春作</small></span></button>
           </div>
         </div>
       </section>
 
-      <section
-        id="panel-plan"
-        class="season-panel season-panel--plan"
-        role="tabpanel"
-        aria-labelledby="tab-plan"
-        data-season-panel="plan"
-      >
+      <section id="panel-plan" class="season-panel season-panel--plan" role="tabpanel" aria-labelledby="tab-plan" data-season-panel="plan">
         <div class="content-width">
           <div class="section-intro section-intro--plan">
-            <div>
-              <p class="eyebrow">THIS SEASON / 01</p>
-              <h2>これから育てる、<br />三つのもの。</h2>
-            </div>
-            <p>
-              数量と日程が決まったものから、ここへ記録します。<br />
-              予定は天候と生育を見ながら、畑で更新していきます。
-            </p>
+            <div><p class="section-kicker">今期の栽培計画</p><h2>何を、どれだけ、<br />いつ育てるか。</h2></div>
+            <p>日程と数量が決まったものから、ここに記録します。予定は天候と生育を見ながら、畑で更新していきます。</p>
           </div>
-
           <div id="plan-crops" class="crop-ledger" aria-live="polite"></div>
 
           <section class="future-flow" aria-labelledby="plan-schedule-title">
-            <div class="future-flow__head">
-              <p class="eyebrow">NEXT TO RECORD</p>
-              <h2 id="plan-schedule-title">播く日から、<br />届ける日まで。</h2>
-            </div>
+            <div class="future-flow__head"><p class="section-kicker">週別の作業</p><h2 id="plan-schedule-title">播く日から、<br />届ける日まで。</h2></div>
             <div id="plan-schedule" class="schedule-pending">
-              <p class="schedule-pending__lead">
-                日程を受け取ったら、<br />
-                週ごとの流れを畑の地図のように記します。
-              </p>
-              <ol class="schedule-steps" aria-label="播種、定植・管理作業、収穫・納入の順に記録します">
-                <li><span>01</span><strong>播種</strong></li>
-                <li><span>02</span><strong>定植・管理</strong></li>
-                <li><span>03</span><strong>収穫・納入</strong></li>
-              </ol>
+              <p class="schedule-pending__lead">日程を受け取ったら、週ごとの流れをここに記します。</p>
+              <ol class="schedule-steps" aria-label="播種、定植・管理作業、収穫・納入の順に記録します"><li><span>1</span><strong>播種</strong></li><li><span>2</span><strong>定植・管理</strong></li><li><span>3</span><strong>収穫・納入</strong></li></ol>
             </div>
             <p class="annotation">収穫時期や作業日は、天候と生育のようすによって前後します。</p>
           </section>
         </div>
       </section>
 
-      <section
-        id="panel-spring-2026"
-        class="season-panel season-panel--archive"
-        role="tabpanel"
-        aria-labelledby="tab-spring-2026"
-        data-season-panel="spring-2026"
-        hidden
-      >
+      <section id="panel-spring-2026" class="season-panel season-panel--archive" role="tabpanel" aria-labelledby="tab-spring-2026" data-season-panel="spring-2026" hidden>
         <div class="content-width">
           <div class="section-intro section-intro--archive">
-            <div>
-              <p class="eyebrow">FIELD ARCHIVE / 2026</p>
-              <h2>3月から7月。<br />畑で起きたこと。</h2>
-            </div>
-            <p>
-              当時の予定と実績を、記録として残しています。<br />
-              今期の計画と混ざらないよう、いつでもここから見返せます。
-            </p>
+            <div><p class="section-kicker">2026年 春作の記録</p><h2>3月から7月。<br />畑で起きたこと。</h2></div>
+            <p>当時の予定と実績を、記録として残しています。今期の計画と混ざらないよう、いつでもここから見返せます。</p>
           </div>
 
           <section class="delivery-summary" aria-labelledby="spring-summary-title">
-            <div class="delivery-summary__title">
-              <p class="eyebrow">MAY DELIVERY</p>
-              <h3 id="spring-summary-title">5月の納入実績</h3>
-            </div>
-            <div class="summary-grid">
-              <article>
-                <p>小松菜</p>
-                <strong>67.6<span>kg</span></strong>
-                <small>西部・北部 合計</small>
-              </article>
-              <article>
-                <p>青梗菜</p>
-                <strong>54.4<span>kg</span></strong>
-                <small>西部・北部 合計</small>
-              </article>
-              <article>
-                <p>キャベツ</p>
-                <strong>86.6<span>kg</span></strong>
-                <small>北部 合計</small>
-              </article>
-            </div>
+            <div class="delivery-summary__title"><p class="section-kicker">5月の納入</p><h3 id="spring-summary-title">納入実績</h3></div>
+            <div class="summary-grid"><article><p>小松菜</p><strong>67.6<span>kg</span></strong><small>西部・北部 合計</small></article><article><p>青梗菜</p><strong>54.4<span>kg</span></strong><small>西部・北部 合計</small></article><article><p>キャベツ</p><strong>86.6<span>kg</span></strong><small>北部 合計</small></article></div>
           </section>
 
           <section class="archive-gantt-section" aria-labelledby="archive-gantt-title">
-            <div class="section-heading section-heading--gantt">
-              <div>
-                <p class="eyebrow">WEEK BY WEEK</p>
-                <h3 id="archive-gantt-title">作業・収穫・出荷の流れ</h3>
-              </div>
-              <div class="legend" aria-label="ガント表の凡例">
-                <span><i class="legend__swatch legend__swatch--work"></i>作業</span>
-                <span><i class="legend__swatch legend__swatch--harvest"></i>収穫</span>
-                <span><i class="legend__swatch legend__swatch--delivery"></i>出荷可能</span>
-              </div>
-            </div>
-            <div class="crop-filter" aria-label="品目で表示を絞り込む">
-              <span>表示する品目</span>
-              <div id="crop-filter-buttons"></div>
-            </div>
-            <div class="gantt-scroll" tabindex="0" aria-label="2026年春作の週別ガント表。横にスクロールして確認できます。">
-              <div id="archive-gantt" class="gantt-chart"></div>
-            </div>
+            <div class="section-heading section-heading--gantt"><div><p class="section-kicker">週別の記録</p><h3 id="archive-gantt-title">作業・収穫・出荷の流れ</h3></div><div class="legend" aria-label="ガント表の凡例"><span><i class="legend__swatch legend__swatch--work"></i>作業</span><span><i class="legend__swatch legend__swatch--harvest"></i>収穫</span><span><i class="legend__swatch legend__swatch--delivery"></i>出荷可能</span></div></div>
+            <div class="crop-filter" aria-label="品目で表示を絞り込む"><span>表示する品目</span><div id="crop-filter-buttons"></div></div>
+            <div class="gantt-scroll" tabindex="0" aria-label="2026年春作の週別ガント表。横にスクロールして確認できます。"><div id="archive-gantt" class="gantt-chart"></div></div>
             <p class="gantt-note">横にスクロールすると、3月から7月までの週別の流れを確認できます。</p>
           </section>
 
-          <section class="archive-list-section" aria-labelledby="archive-list-title">
-            <div class="section-heading">
-              <p class="eyebrow">MONTH BY MONTH</p>
-              <h3 id="archive-list-title">月ごとの記録</h3>
-            </div>
-            <div id="archive-list" class="monthly-list"></div>
-          </section>
+          <section class="archive-list-section" aria-labelledby="archive-list-title"><div class="section-heading"><p class="section-kicker">月別の記録</p><h3 id="archive-list-title">月ごとの記録</h3></div><div id="archive-list" class="monthly-list"></div></section>
         </div>
       </section>
 
       <section class="calendar-section" aria-labelledby="calendar-title">
-        <div class="content-width calendar-section__inner">
-          <div class="section-intro section-intro--calendar">
-            <div>
-              <p class="eyebrow">DAY BY DAY</p>
-              <h2 id="calendar-title">日付で、<br />畑をたどる。</h2>
-            </div>
-            <p>Google カレンダーでは、過去の予定も月を移動して確認できます。</p>
-          </div>
-          <div class="calendar-frame">
-            <iframe
-              title="給食畑のGoogleカレンダー"
-              src="https://calendar.google.com/calendar/embed?src=kyushokubatake%40gmail.com&ctz=Asia%2FTokyo"
-              frameborder="0"
-              scrolling="no"
-            ></iframe>
-          </div>
-        </div>
+        <div class="content-width"><div class="section-intro section-intro--calendar"><div><p class="section-kicker">詳細の日程</p><h2 id="calendar-title">日付で、<br />畑をたどる。</h2></div><p>Google カレンダーでは、過去の予定も月を移動して確認できます。</p></div><div class="calendar-frame"><iframe title="給食畑のGoogleカレンダー" src="https://calendar.google.com/calendar/embed?src=kyushokubatake%40gmail.com&ctz=Asia%2FTokyo" frameborder="0" scrolling="no"></iframe></div></div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <a class="brand brand--footer" href="/">
-        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
-          <path d="M20 34V15M20 23C11 24 7 18 7 10c8 0 13 4 13 13M21 18c2-8 7-11 13-10 0 8-5 12-13 12" />
-        </svg>
-        <span>給食畑</span>
-      </a>
-      <p>三原市高坂町から、給食へ。</p>
-      <small>&copy; 2026 給食畑プロジェクト</small>
-    </footer>
-
+    <footer class="site-footer"><a class="brand brand--footer" href="/"><svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 34V15M20 23C11 24 7 18 7 10c8 0 13 4 13 13M21 18c2-8 7-11 13-10 0 8-5 12-13 12" /></svg><span>給食畑</span></a><p>三原市高坂町から、給食へ。</p><small>&copy; 2026 給食畑プロジェクト</small></footer>
     <script src="schedule.js"></script>
   </body>
 </html>

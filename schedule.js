@@ -73,7 +73,7 @@ function renderPlanCrops() {
     .map((crop, index) => `
       <article class="crop-entry crop-entry--${crop.theme}">
         <div>
-          <span class="crop-entry__number">CROP / 0${index + 1}</span>
+          <span class="crop-entry__number">栽培予定</span>
           <div class="crop-entry__name"><h3>${crop.name}</h3><span class="crop-glyph" aria-hidden="true"></span></div>
         </div>
         <dl>
