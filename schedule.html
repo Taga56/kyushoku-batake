@@ -14,7 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M31 58V21M31 34C16 35 10 25 10 14c13-1 21 6 21 20M33 25c3-13 11-18 22-17 0 13-8 20-22 20' fill='none' stroke='%232e754c' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M31 58V21M31 34C16 35 10 25 10 14c13-1 21 6 21 20M33 25c3-13 11-18 22-17 0 13-8 20-22 20' fill='none' stroke='%2315271c' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
     <link rel="stylesheet" href="schedule.css" />
   </head>
   <body>
@@ -23,7 +26,9 @@
     <header class="site-header">
       <div class="site-header__inner">
         <a class="brand" href="/" aria-label="給食畑 トップページ">
-          <span class="brand__mark" aria-hidden="true"></span>
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+            <path d="M20 34V15M20 23C11 24 7 18 7 10c8 0 13 4 13 13M21 18c2-8 7-11 13-10 0 8-5 12-13 12" />
+          </svg>
           <span>給食畑</span>
         </a>
         <nav aria-label="主要メニュー">
@@ -36,17 +41,31 @@
     </header>
 
     <main id="main">
-      <section class="page-intro" aria-labelledby="page-title">
-        <div class="page-intro__inner">
-          <div>
-            <p class="section-label">栽培の予定と記録</p>
-            <h1 id="page-title">畑の予定帳</h1>
-            <p class="page-intro__copy">
-              いつ何を育て、どのくらい届けるのか。<br />
-              今期の見通しと、これまでの記録をここに残します。
-            </p>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero__field" aria-hidden="true">
+          <svg viewBox="0 0 1440 690" preserveAspectRatio="xMidYMid slice">
+            <path class="field-line field-line--one" d="M-60 552C220 421 376 636 616 516S1012 405 1504 509" />
+            <path class="field-line field-line--two" d="M-42 640C242 493 385 723 673 582s482-122 802-18" />
+            <path class="field-line field-line--three" d="M-54 732C279 560 456 794 736 636s535-117 800 20" />
+            <g class="field-sprout field-sprout--one">
+              <path d="M1068 387v-95M1068 335c-40 4-56-21-55-54 36-2 55 17 55 54M1071 319c13-35 38-45 68-34-10 34-33 45-68 43" />
+            </g>
+            <g class="field-sprout field-sprout--two">
+              <path d="M1266 470v-70M1266 433c-29 3-41-15-40-39 27-2 40 13 40 39M1268 421c9-26 28-34 51-26-8 26-25 34-51 32" />
+            </g>
+          </svg>
+        </div>
+        <div class="hero__inner content-width">
+          <p class="eyebrow">畑から、今日の給食へ。</p>
+          <h1 id="page-title">畑の予定帳</h1>
+          <p class="hero__copy">
+            育てるもの、手をかける時期、届ける量。<br />
+            ひとつの季節を、みんなで見通せるように。
+          </p>
+          <div class="hero__meta" aria-label="今期の概要">
+            <p><span>SEASON</span><strong>2026 秋 — 2027 夏</strong></p>
+            <p><span>GROWING</span><strong>玉ねぎ・小松菜・キャベツ</strong></p>
           </div>
-          <p class="season-stamp">2026 秋〜2027 夏<span>次の給食へ向けて、ただいま準備中</span></p>
         </div>
       </section>
 
@@ -62,8 +81,8 @@
               aria-controls="panel-plan"
               data-season-tab="plan"
             >
-              今期の予定
-              <span>2026秋〜2027夏</span>
+              <span class="season-tab__index">01</span>
+              <span>今期の予定<small>2026秋〜2027夏</small></span>
             </button>
             <button
               id="tab-spring-2026"
@@ -74,8 +93,8 @@
               aria-controls="panel-spring-2026"
               data-season-tab="spring-2026"
             >
-              過去の記録
-              <span>2026年 春作</span>
+              <span class="season-tab__index">02</span>
+              <span>過去の記録<small>2026年 春作</small></span>
             </button>
           </div>
         </div>
@@ -83,63 +102,71 @@
 
       <section
         id="panel-plan"
-        class="season-panel"
+        class="season-panel season-panel--plan"
         role="tabpanel"
         aria-labelledby="tab-plan"
         data-season-panel="plan"
       >
         <div class="content-width">
-          <div class="section-heading section-heading--split">
+          <div class="section-intro section-intro--plan">
             <div>
-              <p class="section-label">今期の計画</p>
-              <h2>育てるものと、目指す量</h2>
+              <p class="eyebrow">THIS SEASON / 01</p>
+              <h2>これから育てる、<br />三つのもの。</h2>
             </div>
             <p>
-              播種・定植・収穫の日付と目標量を確認しながら、順番に記録していきます。
+              数量と日程が決まったものから、ここへ記録します。<br />
+              予定は天候と生育を見ながら、畑で更新していきます。
             </p>
           </div>
 
           <div id="plan-crops" class="crop-ledger" aria-live="polite"></div>
 
-          <section class="schedule-shell" aria-labelledby="plan-schedule-title">
-            <div class="section-heading">
-              <p class="section-label">週別の作業</p>
-              <h2 id="plan-schedule-title">播種から収穫まで</h2>
+          <section class="future-flow" aria-labelledby="plan-schedule-title">
+            <div class="future-flow__head">
+              <p class="eyebrow">NEXT TO RECORD</p>
+              <h2 id="plan-schedule-title">播く日から、<br />届ける日まで。</h2>
             </div>
             <div id="plan-schedule" class="schedule-pending">
-              <p>日程を受け取ったら、ここに週別ガント表を表示します。</p>
-              <div class="schedule-steps" aria-label="播種、定植・管理作業、収穫・納入の順に記録します">
-                <span><b aria-hidden="true">1</b>播種</span>
-                <span><b aria-hidden="true">2</b>定植・管理作業</span>
-                <span><b aria-hidden="true">3</b>収穫・納入</span>
-              </div>
+              <p class="schedule-pending__lead">
+                日程を受け取ったら、<br />
+                週ごとの流れを畑の地図のように記します。
+              </p>
+              <ol class="schedule-steps" aria-label="播種、定植・管理作業、収穫・納入の順に記録します">
+                <li><span>01</span><strong>播種</strong></li>
+                <li><span>02</span><strong>定植・管理</strong></li>
+                <li><span>03</span><strong>収穫・納入</strong></li>
+              </ol>
             </div>
-            <p class="annotation">
-              収穫時期や作業日は、天候と生育のようすによって前後します。
-            </p>
+            <p class="annotation">収穫時期や作業日は、天候と生育のようすによって前後します。</p>
           </section>
         </div>
       </section>
 
       <section
         id="panel-spring-2026"
-        class="season-panel"
+        class="season-panel season-panel--archive"
         role="tabpanel"
         aria-labelledby="tab-spring-2026"
         data-season-panel="spring-2026"
         hidden
       >
         <div class="content-width">
-          <div class="archive-intro">
-            <p class="section-label">2026年 春作の記録</p>
-            <h2>3月から7月の作業と納入</h2>
+          <div class="section-intro section-intro--archive">
+            <div>
+              <p class="eyebrow">FIELD ARCHIVE / 2026</p>
+              <h2>3月から7月。<br />畑で起きたこと。</h2>
+            </div>
             <p>
-              当時の予定を残しています。今期の計画と混ざらないよう、記録としていつでも見返せます。
+              当時の予定と実績を、記録として残しています。<br />
+              今期の計画と混ざらないよう、いつでもここから見返せます。
             </p>
           </div>
 
-          <section aria-labelledby="spring-summary-title">
-            <h3 id="spring-summary-title" class="subsection-title">5月の納入実績</h3>
+          <section class="delivery-summary" aria-labelledby="spring-summary-title">
+            <div class="delivery-summary__title">
+              <p class="eyebrow">MAY DELIVERY</p>
+              <h3 id="spring-summary-title">5月の納入実績</h3>
+            </div>
             <div class="summary-grid">
               <article>
                 <p>小松菜</p>
@@ -159,10 +186,10 @@
             </div>
           </section>
 
-          <section class="schedule-shell" aria-labelledby="archive-gantt-title">
-            <div class="section-heading section-heading--split">
+          <section class="archive-gantt-section" aria-labelledby="archive-gantt-title">
+            <div class="section-heading section-heading--gantt">
               <div>
-                <p class="section-label">週別の記録</p>
+                <p class="eyebrow">WEEK BY WEEK</p>
                 <h3 id="archive-gantt-title">作業・収穫・出荷の流れ</h3>
               </div>
               <div class="legend" aria-label="ガント表の凡例">
@@ -171,15 +198,20 @@
                 <span><i class="legend__swatch legend__swatch--delivery"></i>出荷可能</span>
               </div>
             </div>
-            <div class="gantt-scroll" tabindex="0" aria-label="2026年春作の週別ガント表">
+            <div class="crop-filter" aria-label="品目で表示を絞り込む">
+              <span>表示する品目</span>
+              <div id="crop-filter-buttons"></div>
+            </div>
+            <div class="gantt-scroll" tabindex="0" aria-label="2026年春作の週別ガント表。横にスクロールして確認できます。">
               <div id="archive-gantt" class="gantt-chart"></div>
             </div>
+            <p class="gantt-note">横にスクロールすると、3月から7月までの週別の流れを確認できます。</p>
           </section>
 
-          <section aria-labelledby="archive-list-title">
+          <section class="archive-list-section" aria-labelledby="archive-list-title">
             <div class="section-heading">
-              <p class="section-label">月別の記録</p>
-              <h3 id="archive-list-title">カレンダー風リスト</h3>
+              <p class="eyebrow">MONTH BY MONTH</p>
+              <h3 id="archive-list-title">月ごとの記録</h3>
             </div>
             <div id="archive-list" class="monthly-list"></div>
           </section>
@@ -187,13 +219,13 @@
       </section>
 
       <section class="calendar-section" aria-labelledby="calendar-title">
-        <div class="content-width">
-          <div class="section-heading section-heading--split">
+        <div class="content-width calendar-section__inner">
+          <div class="section-intro section-intro--calendar">
             <div>
-              <p class="section-label">詳細の日程</p>
-              <h2 id="calendar-title">Google カレンダー</h2>
+              <p class="eyebrow">DAY BY DAY</p>
+              <h2 id="calendar-title">日付で、<br />畑をたどる。</h2>
             </div>
-            <p>過去の予定も、月を移動して確認できます。</p>
+            <p>Google カレンダーでは、過去の予定も月を移動して確認できます。</p>
           </div>
           <div class="calendar-frame">
             <iframe
@@ -209,7 +241,9 @@
 
     <footer class="site-footer">
       <a class="brand brand--footer" href="/">
-        <span class="brand__mark" aria-hidden="true"></span>
+        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M20 34V15M20 23C11 24 7 18 7 10c8 0 13 4 13 13M21 18c2-8 7-11 13-10 0 8-5 12-13 12" />
+        </svg>
         <span>給食畑</span>
       </a>
       <p>三原市高坂町から、給食へ。</p>
