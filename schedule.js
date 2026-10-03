@@ -2,23 +2,26 @@ const planCrops = [
   {
     name: "玉ねぎ",
     theme: "onion",
-    quantity: "目標量を確認後に記載",
-    place: "畝・株数を確認後に記載",
-    milestones: ["播種", "定植", "収穫予定"],
+    quantity: "北部向け・大玉 300kg以上",
+    place: "3畝・3,300株予定",
+    usage: "西部：783〜1,148.5kg／月　北部：313〜418.5kg／月（4〜11月）",
+    milestones: ["植え付け 11月中旬（予定）"],
   },
   {
     name: "小松菜",
     theme: "komatsuna",
-    quantity: "目標量を確認後に記載",
-    place: "畝・播種回数を確認後に記載",
-    milestones: ["播種", "管理作業", "収穫予定"],
+    quantity: "77kgを目標（12月分）",
+    place: "1畝",
+    usage: "西部 35kg／北部 22kg（12月平均・計57kg）",
+    milestones: ["播種 10/7〜10", "収穫予定 12月"],
   },
   {
     name: "キャベツ",
     theme: "cabbage",
-    quantity: "目標量を確認後に記載",
+    quantity: "秀品 400kgを目標（2月分）",
     place: "畝・株数を確認後に記載",
-    milestones: ["播種", "定植", "収穫予定"],
+    usage: "西部 394kg／北部 122.5kg（2月平均・計516.5kg）",
+    milestones: ["植え付け 10/2（完了）", "収穫予定 2月"],
   },
 ];
 
@@ -79,6 +82,7 @@ function renderPlanCrops() {
         <dl>
           <div><dt>目標量</dt><dd>${crop.quantity}</dd></div>
           <div><dt>栽培場所</dt><dd>${crop.place}</dd></div>
+          <div><dt>使用量の目安</dt><dd>${crop.usage}</dd></div>
           <div class="crop-entry__milestones"><dt>記録する時期</dt><dd>${crop.milestones.map((item) => `<span>${item}</span>`).join("")}</dd></div>
         </dl>
       </article>`,
