@@ -25,6 +25,40 @@ const planCrops = [
   },
 ];
 
+const planColumns = [
+  { month: "10月", week: "1週" },
+  { month: "10月", week: "2週" },
+  { month: "10月", week: "3週" },
+  { month: "10月", week: "4週" },
+  { month: "10月", week: "5週" },
+  { month: "11月", week: "1週" },
+  { month: "11月", week: "2週" },
+  { month: "11月", week: "3週" },
+  { month: "11月", week: "4週" },
+  { month: "12月", week: "1週" },
+  { month: "12月", week: "2週" },
+  { month: "12月", week: "3週" },
+  { month: "12月", week: "4週" },
+  { month: "12月", week: "5週" },
+  { month: "1月", week: "1週" },
+  { month: "1月", week: "2週" },
+  { month: "1月", week: "3週" },
+  { month: "1月", week: "4週" },
+  { month: "1月", week: "5週" },
+  { month: "2月", week: "1週" },
+  { month: "2月", week: "2週" },
+  { month: "2月", week: "3週" },
+  { month: "2月", week: "4週" },
+];
+
+const planRows = [
+  { crop: "キャベツ", task: "植え付け", bars: [{ start: 1, span: 1, label: "10/2 完了", type: "work complete" }] },
+  { crop: "キャベツ", task: "収穫", bars: [{ start: 20, span: 4, label: "2月 収穫予定", type: "harvest planned" }] },
+  { crop: "小松菜", task: "播種", bars: [{ start: 2, span: 1, label: "10/7〜10", type: "work planned" }] },
+  { crop: "小松菜", task: "収穫・納入", bars: [{ start: 10, span: 5, label: "12月分 収穫・納入目標", type: "delivery planned" }] },
+  { crop: "玉ねぎ", task: "植え付け", bars: [{ start: 8, span: 1, label: "11月中旬", type: "work planned" }] },
+];
+
 const archiveColumns = [
   { month: "3月", week: "4週" },
   { month: "3月", week: "5週" },
@@ -88,6 +122,44 @@ function renderPlanCrops() {
       </article>`,
     )
     .join("");
+}
+
+function renderPlanGantt() {
+  const chart = document.querySelector("#plan-gantt");
+  const monthGroups = [];
+  planColumns.forEach((column) => {
+    const previous = monthGroups.at(-1);
+    if (previous && previous.month === column.month) previous.span += 1;
+    else monthGroups.push({ month: column.month, span: 1 });
+  });
+
+  const monthHeader = monthGroups
+    .map((group) => `<span style="grid-column: span ${group.span}">${group.month}</span>`)
+    .join("");
+  const weekHeader = planColumns.map((column) => `<span>${column.week}</span>`).join("");
+  const rows = planRows
+    .map((row, index) => `
+      <div class="gantt-row ${index % 2 ? "gantt-row--sub" : ""}">
+        <div class="gantt-row__label">
+          <strong>${index > 0 && planRows[index - 1].crop === row.crop ? "" : row.crop}</strong>
+          <span>${row.task}</span>
+        </div>
+        <div class="gantt-track" style="--columns: ${planColumns.length}">
+          ${row.bars.map((bar) => `<span class="gantt-bar ${bar.type.split(" ").map((type) => `gantt-bar--${type}`).join(" ")}" style="grid-column: ${bar.start} / span ${bar.span}">${bar.label}</span>`).join("")}
+        </div>
+      </div>`)
+    .join("");
+
+  chart.innerHTML = `
+    <div class="gantt-header">
+      <span>品目・作業</span>
+      <div class="gantt-header__months" style="--columns: ${planColumns.length}">${monthHeader}</div>
+    </div>
+    <div class="gantt-header gantt-header--weeks">
+      <span>週</span>
+      <div class="gantt-header__weeks" style="--columns: ${planColumns.length}">${weekHeader}</div>
+    </div>
+    ${rows}`;
 }
 
 function renderArchiveGantt() {
@@ -193,6 +265,7 @@ function setupCropFilter() {
 }
 
 renderPlanCrops();
+renderPlanGantt();
 renderArchiveGantt();
 renderArchiveList();
 setupTabs();
