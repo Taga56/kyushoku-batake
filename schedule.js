@@ -75,14 +75,12 @@ const planColumns = [
 
 const planRows = [
   { crop: "キャベツ", task: "植え付け", bars: [{ start: 1, span: 1, label: "10/2 完了", type: "work complete" }] },
-  { crop: "キャベツ", task: "収穫", bars: [{ start: 20, span: 4, label: "2月 収穫予定", type: "harvest planned" }] },
-  { crop: "キャベツ", task: "出荷", bars: [{ start: 20, span: 4, label: "2月 出荷予定", type: "delivery planned" }] },
+  { crop: "キャベツ", task: "収穫・出荷", bars: [{ start: 20, span: 4, label: "2月 収穫・出荷予定", type: "harvest planned" }] },
   { crop: "小松菜", task: "播種", bars: [{ start: 2, span: 1, label: "10/7〜10", type: "work planned" }] },
-  { crop: "小松菜", task: "収穫", bars: [{ start: 10, span: 5, label: "12月 収穫予定", type: "harvest planned" }] },
-  { crop: "小松菜", task: "出荷", bars: [{ start: 10, span: 5, label: "12月 出荷予定", type: "delivery planned" }] },
+  { crop: "小松菜", task: "収穫・出荷", bars: [{ start: 10, span: 5, label: "12月 収穫・出荷予定", type: "harvest planned" }] },
   { crop: "玉ねぎ", task: "植え付け", bars: [{ start: 8, span: 1, label: "11月中旬", type: "work planned" }] },
-  { crop: "玉ねぎ", task: "出荷", bars: [{ start: 39, span: 7, label: "6月以降 出荷予定", type: "delivery planned" }] },
-  { crop: "予定", task: "定例会", bars: [{ start: 2, span: 1, label: "10/8 13:30〜", type: "meeting planned" }] },
+  { crop: "玉ねぎ", task: "収穫・出荷", bars: [{ start: 39, span: 7, label: "6月以降 収穫・出荷予定", type: "harvest planned" }] },
+  { crop: "予定", task: "定例会", bars: [{ start: 2, span: 1, label: "10/8 12:45〜13:45", type: "meeting planned" }] },
 ];
 
 const archiveColumns = [
