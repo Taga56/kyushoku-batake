@@ -1,0 +1,129 @@
+:root { --ink:#1c3931; --green:#34735c; --paper:#f7f8f6; --white:#fff; --line:#d3ded5; --muted:#64756d; --soil:#b85d45; --water:#628b9b; --onion:#7f6a8d; --komatsuna:#31815f; --cabbage:#3e8790; --delivery:#4e759b; --content:1160px; }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; }
+      body { margin:0; background:var(--paper); color:var(--ink); font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif; font-size:15px; font-weight:500; line-height:1.72; }
+      button { font:inherit; cursor:pointer; }
+      a { color:inherit; text-underline-offset:.2em; }
+      h1,h2,h3,h4 { margin:0; font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; font-weight:800; letter-spacing:-.055em; line-height:1.28; }
+      a:focus-visible,button:focus-visible,.gantt-scroll:focus-visible { outline:3px solid #d6a849; outline-offset:3px; }
+      .skip-link { position:fixed; z-index:100; top:.5rem; left:.5rem; transform:translateY(-150%); padding:.4rem .7rem; background:var(--ink); color:white; font-weight:700; }
+      .skip-link:focus { transform:translateY(0); }
+      .content-width { width:min(var(--content),calc(100% - 3rem)); margin:auto; }
+
+      .site-header { border-bottom:1px solid var(--line); background:var(--white); }
+      .site-header__inner { width:min(var(--content),calc(100% - 3rem)); min-height:62px; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+      .brand { display:inline-flex; align-items:center; gap:.4rem; font-family:"Noto Sans JP",sans-serif; font-size:1rem; font-weight:800; letter-spacing:-.04em; line-height:1; text-decoration:none; white-space:nowrap; }
+      .brand__mark { width:1.25rem; height:1.25rem; fill:none; stroke:var(--green); stroke-linecap:round; stroke-linejoin:round; stroke-width:2.7; }
+      nav { display:flex; gap:clamp(.6rem,1.7vw,1.5rem); align-items:center; font-family:"Noto Sans JP",sans-serif; font-size:.76rem; font-weight:700; }
+      nav>a { padding:.3rem 0; color:var(--muted); text-decoration:none; }
+      nav>a.is-current { border-bottom:2px solid var(--soil); color:var(--ink); }
+      .header-cta { padding:.36rem .7rem; border:1px solid var(--ink); color:var(--ink); }
+
+      .season-navigation { position:sticky; z-index:10; top:0; border-bottom:1px solid var(--line); background:rgba(247,248,246,.97); backdrop-filter:blur(10px); }
+      .season-tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .season-tab { min-height:57px; padding:.55rem 0; border:0; border-bottom:3px solid transparent; background:transparent; color:var(--muted); text-align:left; font-family:"Noto Sans JP",sans-serif; font-size:.88rem; font-weight:700; line-height:1.25; }
+      .season-tab+.season-tab { padding-left:1rem; }
+      .season-tab__index { display:none; }
+      .season-tab small { display:block; margin-top:.1rem; font-family:"M PLUS Rounded 1c",sans-serif; font-size:.64rem; font-weight:500; }
+      .season-tab.is-active { border-color:var(--soil); color:var(--ink); }
+
+      .season-panel { padding:clamp(2.4rem,5vw,4.5rem) 0; }
+      .season-panel[hidden] { display:none; }
+      .section-intro { display:flex; align-items:baseline; justify-content:space-between; gap:2rem; padding-bottom:1.1rem; border-bottom:1px solid var(--ink); }
+      .section-intro h1,.section-intro h2 { font-size:clamp(1.45rem,2.6vw,2.2rem); }
+      .section-intro>p { max-width:34rem; margin:0; color:var(--muted); font-size:.87rem; font-weight:700; }
+      .section-kicker { display:none; }
+
+      .crop-ledger { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:1.6rem; border-top:4px solid var(--entry-color, var(--ink)); }
+      .crop-entry { min-width:0; padding:1rem 1.1rem 1.2rem; border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--white); }
+      .crop-entry:first-child { border-left:1px solid var(--line); }
+      .crop-entry--onion { --entry-color:var(--onion); --entry-pale:#eeeaf1; }
+      .crop-entry--komatsuna { --entry-color:var(--komatsuna); --entry-pale:#e4f0e9; }
+      .crop-entry--cabbage { --entry-color:var(--cabbage); --entry-pale:#e2eff0; }
+      .crop-entry__number { display:block; margin-bottom:1.15rem; color:var(--entry-color); font-family:"Noto Sans JP",sans-serif; font-size:.65rem; font-weight:700; }
+      .crop-entry__name { display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
+      .crop-entry__name h3 { font-size:1.35rem; }
+      .crop-glyph { position:relative; flex:0 0 auto; width:2rem; height:2rem; border:1.5px solid var(--entry-color); border-radius:50%; }
+      .crop-glyph::before,.crop-glyph::after { position:absolute; content:""; }
+      .crop-entry--onion .crop-glyph::before { top:.43rem; left:.55rem; width:.72rem; height:.84rem; border:1.4px solid var(--entry-color); border-radius:48% 48% 52% 52%; }
+      .crop-entry--onion .crop-glyph::after { top:.2rem; left:.93rem; height:.43rem; border-left:1.4px solid var(--entry-color); }
+      .crop-entry--komatsuna .crop-glyph::before { top:.4rem; left:.61rem; width:.7rem; height:.9rem; border:1.4px solid var(--entry-color); border-radius:100% 0 100% 0; transform:rotate(-40deg); }
+      .crop-entry--komatsuna .crop-glyph::after { top:1.25rem; left:.92rem; height:.46rem; border-left:1.4px solid var(--entry-color); transform:rotate(18deg); }
+      .crop-entry--cabbage .crop-glyph::before { inset:.43rem; border:1.4px solid var(--entry-color); border-radius:50%; }
+      .crop-entry--cabbage .crop-glyph::after { top:.28rem; left:.92rem; width:1px; height:1.4rem; background:var(--entry-color); transform:rotate(34deg); }
+      .crop-entry dl { display:grid; gap:.72rem; margin:1.4rem 0 0; }
+      .crop-entry dl>div { padding-top:.55rem; border-top:1px solid color-mix(in srgb,var(--entry-color) 20%,white); }
+      dt { color:#718179; font-family:"Noto Sans JP",sans-serif; font-size:.62rem; font-weight:700; }
+      dd { margin:.1rem 0 0; font-size:.78rem; font-weight:700; line-height:1.55; }
+      .crop-entry__milestones dd { display:flex; flex-wrap:wrap; gap:.25rem; }
+      .crop-entry__milestones dd span { padding:.13rem .3rem; background:var(--entry-pale); color:var(--entry-color); font-family:"Noto Sans JP",sans-serif; font-size:.59rem; font-weight:700; }
+
+      .plan-gantt-section { margin-top:clamp(3rem,6vw,4.75rem); padding-top:1.1rem; border-top:1px solid var(--ink); }
+      .plan-gantt-section .section-heading { margin-bottom:.75rem; }
+      .plan-gantt-section .section-heading--gantt { display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem; }
+      .plan-gantt-section .section-heading h2 { font-size:clamp(1.3rem,2.2vw,1.8rem); }
+      .plan-gantt-section .gantt-chart { min-width:1940px; }
+      .gantt-bar.gantt-bar--complete { background:#245a43; box-shadow:inset 0 -2px 0 rgba(0,0,0,.12); }
+      .gantt-bar--planned { box-shadow:inset 0 0 0 1px rgba(255,255,255,.52); }
+      .gantt-bar--meeting { background:var(--onion); }
+      .plan-gantt-note { margin:.65rem 0 0; color:var(--muted); font-size:.68rem; font-weight:700; }
+      .gantt-note { margin:.65rem 0 0; color:var(--muted); font-size:.68rem; font-weight:700; }
+
+      .season-panel--archive { background:#e7efe8; }
+      .section-intro--archive { margin-bottom:2.3rem; }
+      .delivery-summary { display:grid; grid-template-columns:10.5rem 1fr; gap:2rem; align-items:start; padding:1.1rem 0; border-top:1px solid var(--ink); border-bottom:1px solid #becdc0; }
+      .delivery-summary__title h3 { font-size:1.05rem; }
+      .summary-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#bdcbbf; }.summary-grid--single { grid-template-columns:minmax(0,1fr); }
+      .summary-grid article { min-width:0; padding:.8rem .9rem; background:var(--white); border-top:3px solid var(--komatsuna); }
+      .summary-grid article:nth-child(2) { border-color:var(--water); }
+      .summary-grid article:nth-child(3) { border-color:var(--soil); }
+      .summary-grid p,.summary-grid small { display:block; margin:0; color:var(--muted); font-family:"Noto Sans JP",sans-serif; font-size:.63rem; font-weight:700; }
+      .summary-grid strong { display:block; margin:.35rem 0 .22rem; font-family:"Noto Sans JP",sans-serif; font-size:clamp(1.5rem,2.5vw,2.25rem); font-weight:800; letter-spacing:-.09em; line-height:1; }
+      .summary-grid strong span { margin-left:.1rem; font-size:.64em; letter-spacing:0; }
+
+      .archive-gantt-section { margin-top:3.6rem; }
+      .section-heading { margin-bottom:.9rem; }
+      .section-heading--gantt { display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem; }
+      .section-heading h3 { font-size:clamp(1.2rem,2vw,1.6rem); }
+      .legend { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.65rem; color:var(--muted); font-family:"Noto Sans JP",sans-serif; font-size:.64rem; font-weight:700; }
+      .legend span { display:inline-flex; align-items:center; gap:.25rem; }
+      .legend__swatch { width:.62rem; height:.62rem; border-radius:50%; background:var(--komatsuna); }
+      .legend__swatch--harvest { background:var(--soil); }.legend__swatch--delivery { background:var(--delivery); }.legend__swatch--meeting { background:var(--onion); }
+      .crop-filter { display:flex; align-items:center; gap:.7rem; margin:0 0 .75rem; color:var(--muted); font-size:.68rem; font-weight:700; }
+      .crop-filter>div { display:flex; flex-wrap:wrap; gap:.25rem; }
+      .crop-filter button { padding:.18rem .45rem; border:1px solid #aabbb0; border-radius:999px; background:transparent; color:var(--ink); font-family:"Noto Sans JP",sans-serif; font-size:.61rem; font-weight:700; }
+      .crop-filter button[aria-pressed="true"] { border-color:var(--green); background:var(--green); color:white; }
+      .gantt-scroll { overflow-x:auto; padding:.25rem 0 .65rem; }
+      .gantt-chart { min-width:1140px; overflow:hidden; border:1px solid #afc0b4; background:white; }
+      .gantt-header,.gantt-row { display:grid; grid-template-columns:10rem 1fr; }
+      .gantt-header>span,.gantt-row__label { padding:.48rem .62rem; border-right:1px solid #dbe4dc; }
+      .gantt-header>span,.gantt-header__months span { background:var(--ink); color:white; font-family:"Noto Sans JP",sans-serif; font-size:.68rem; font-weight:700; }
+      .gantt-header__months,.gantt-header__weeks,.gantt-track { display:grid; grid-template-columns:repeat(var(--columns),minmax(0,1fr)); }
+      .gantt-header__months span,.gantt-header__weeks span { padding:.35rem; border-right:1px solid #d5ded6; text-align:center; }
+      .gantt-header--weeks>span,.gantt-header__weeks span { background:#e5ece5; color:var(--ink); }
+      .gantt-header__weeks span { font-family:"Noto Sans JP",sans-serif; font-size:.57rem; font-weight:700; }
+      .gantt-row { min-height:2.85rem; border-top:1px solid #dbe4dc; }.gantt-row--sub { min-height:2.55rem; }.gantt-row.is-filtered { display:none; }
+      .gantt-row__label { display:grid; grid-template-columns:1fr 2rem; align-items:center; gap:.3rem; background:#fbfcfa; font-family:"Noto Sans JP",sans-serif; font-size:.66rem; line-height:1.25; }
+      .gantt-row__label strong { font-size:.71rem; }.gantt-row__label span { color:#77867b; text-align:right; }
+      .gantt-track { align-items:center; background-image:repeating-linear-gradient(to right,transparent 0,transparent calc((100% / var(--columns)) - 1px),#dde6de calc((100% / var(--columns)) - 1px),#dde6de calc(100% / var(--columns))); }
+      .gantt-bar { display:grid; place-items:center; min-height:1.48rem; margin:.28rem .12rem; padding:.08rem; border-radius:.15rem; color:white; font-family:"Noto Sans JP",sans-serif; font-size:.56rem; font-weight:700; line-height:1.15; text-align:center; }
+      .gantt-bar--work { background:var(--komatsuna); }.gantt-bar--harvest { background:var(--soil); }.gantt-bar--delivery { background:var(--delivery); }
+
+      .archive-list-section { margin-top:3.7rem; }
+      .monthly-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); border-top:1px solid var(--ink); }
+      .month-record { min-width:0; padding:.85rem .75rem 1rem; border-right:1px solid #b9c9bb; border-bottom:1px solid #b9c9bb; background:rgba(255,255,255,.48); }
+      .month-record:first-child { border-left:1px solid #b9c9bb; }
+      .month-record h4 { margin:0 0 .9rem; font-size:1.3rem; }
+      .month-record__period+.month-record__period { margin-top:.7rem; padding-top:.65rem; border-top:1px solid #cbd8cc; }
+      .month-record__period p { margin:0 0 .25rem; color:var(--green); font-family:"Noto Sans JP",sans-serif; font-size:.59rem; font-weight:700; }
+      .month-record__period ul { display:grid; gap:.34rem; margin:0; padding:0; list-style:none; font-size:.68rem; font-weight:700; line-height:1.5; }
+      .month-record__period li { position:relative; padding-left:.62rem; }.month-record__period li::before { position:absolute; top:.38rem; left:0; width:.24rem; height:.24rem; border-radius:50%; background:var(--soil); content:""; }
+
+      .calendar-section { padding:clamp(3rem,6vw,5rem) 0; background:#edf2ed; }.section-intro--calendar { margin-bottom:1.5rem; }
+      .calendar-frame { height:clamp(480px,64vw,690px); overflow:hidden; border:1px solid #b8c8ba; background:white; }.calendar-frame iframe { width:100%; height:100%; border:0; }
+      .site-footer { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.35rem max(1.5rem,calc((100% - var(--content))/2)); background:var(--ink); color:white; }.brand--footer { color:white; }.brand--footer .brand__mark { stroke:#b9d2bd; }.site-footer p,.site-footer small { margin:0; color:rgba(255,255,255,.65); font-size:.66rem; }
+
+      @media(max-width:800px) { .section-intro { display:block; }.section-intro>p { margin-top:.65rem; }.delivery-summary { grid-template-columns:1fr; gap:1rem; }.monthly-list { grid-template-columns:repeat(3,minmax(0,1fr)); }.month-record:nth-child(4) { border-left:1px solid #b9c9bb; } }
+      @media(max-width:680px) { .site-header__inner { min-height:58px; }nav>a:not(.is-current),.header-cta { display:none; }.content-width,.site-header__inner { width:calc(100% - 2rem); }.season-panel { padding:2.2rem 0; }.crop-ledger { grid-template-columns:1fr; }.crop-entry,.crop-entry:first-child { display:grid; grid-template-columns:7.5rem 1fr; gap:1rem; border-left:1px solid var(--line); }.crop-entry__number { margin-bottom:.55rem; }.crop-entry dl { margin:0; }.plan-gantt-section .section-heading--gantt { display:block; }.plan-gantt-section .legend { justify-content:flex-start; margin-top:.6rem; }.section-heading--gantt { display:block; }.legend { justify-content:flex-start; margin-top:.6rem; }.summary-grid { grid-template-columns:1fr; }.summary-grid article { display:grid; grid-template-columns:1fr auto; align-items:center; }.summary-grid strong { grid-row:span 2; grid-column:2; margin:0; }.summary-grid small { grid-column:1; }.monthly-list { grid-template-columns:1fr; }.month-record,.month-record:nth-child(4) { border-left:1px solid #b9c9bb; }.site-footer { display:grid; justify-items:start; gap:.25rem; } }
+      @media(max-width:400px) { body { font-size:14px; }.season-tab { min-height:53px; font-size:.76rem; }.season-tab+.season-tab { padding-left:.55rem; }.crop-entry,.crop-entry:first-child { grid-template-columns:1fr; }.crop-filter { display:block; }.crop-filter>div { margin-top:.4rem; } }
+      @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
